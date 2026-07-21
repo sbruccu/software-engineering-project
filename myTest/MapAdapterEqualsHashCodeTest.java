@@ -1,0 +1,176 @@
+package myTest;
+
+import org.junit.Test;
+import org.junit.Before;
+import static org.junit.Assert.*;
+import myAdapter.*;
+
+/**
+ * <table border="1">
+ * <caption>Test Suite Documentation</caption>
+ * <tr>
+ * <th>Section</th>
+ * <th>Section description</th>
+ * </tr>
+ * <tr>
+ * <td><b>Summary</b></td>
+ * <td>Tests for Map-level equals() and hashCode() contract compliance.</td>
+ * </tr>
+ * <tr>
+ * <td><b>Test Case Design</b></td>
+ * <td>Verifies reflexivity, symmetry, different-content inequality, and
+ * hashCode consistency for MapAdapter.</td>
+ * </tr>
+ * </table>
+ */
+public class MapAdapterEqualsHashCodeTest {
+
+    private HMap map;
+
+    /**
+     * Initializes a fresh empty MapAdapter before each test.
+     */
+    @Before
+    public void setUp() {
+        map = new MapAdapter();
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests equals() and hashCode() on identical maps.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Two maps with same entries must be equal and have same hashCode.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Creates two maps with identical data, verifies equals and hashCode.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Two MapAdapters with identical data.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() true, hashCodes equal.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsAndHashCodeIdentical() {
+        map.put("A", "1");
+        map.put("B", "2");
+
+        HMap map2 = new MapAdapter();
+        map2.put("A", "1");
+        map2.put("B", "2");
+
+        assertTrue(map.equals(map2));
+        assertTrue(map2.equals(map));
+        assertEquals(map.hashCode(), map2.hashCode());
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests equals() returns false for different maps.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Maps with different entries must not be equal.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Creates two maps with different data, verifies not equal.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Two MapAdapters with different data.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsDifferentMaps() {
+        map.put("A", "1");
+        HMap map2 = new MapAdapter();
+        map2.put("A", "2");
+        assertFalse(map.equals(map2));
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests equals() returns false for different sizes.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Maps with different sizes must not be equal.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Creates two maps with different number of entries.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Two MapAdapters with different sizes.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsDifferentSize() {
+        map.put("A", "1");
+        HMap map2 = new MapAdapter();
+        map2.put("A", "1");
+        map2.put("B", "2");
+        assertFalse(map.equals(map2));
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests equals() reflexivity.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>A map must be equal to itself.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls equals(this) on the map.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with data.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsReflexive() {
+        map.put("A", "1");
+        assertTrue(map.equals(map));
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests equals() with non-Map object.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>A map must not be equal to a non-HMap object.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls equals with a String.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with data.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsWithNonMapObject() {
+        map.put("A", "1");
+        assertFalse(map.equals("not a map"));
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests two empty maps are equal.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Boundary: two empty maps must be equal.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Compares two empty MapAdapters.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Two empty MapAdapters.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() returns true, hashCodes equal.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsEmptyMaps() {
+        HMap map2 = new MapAdapter();
+        assertTrue(map.equals(map2));
+        assertEquals(map.hashCode(), map2.hashCode());
+    }
+
+    /**
+     * <table border="1">
+     * <caption>Test Method Documentation</caption>
+     * <tr><th>Section</th><th>Section description</th></tr>
+     * <tr><td><b>Summary</b></td><td>Tests hashCode() is 0 for an empty map.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Sum of entry hashCodes for empty map is 0.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Checks hashCode on empty map.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>hashCode() returns 0.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testHashCodeEmptyMap() {
+        assertEquals(0, map.hashCode());
+    }
+}
