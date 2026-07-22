@@ -7,20 +7,17 @@ import myAdapter.*;
 import java.util.NoSuchElementException;
 
 /**
- * <table border="1">
- * <caption>Test Suite Documentation</caption>
- * <tr>
- * <th>Section</th>
- * <th>Section description</th>
- * </tr>
- * <tr>
- * <td><b>Summary</b></td>
- * <td>Tests for the keySet() backing view: size, contains, clear, iterator,
+ * Tests for the keySet() backing view: size, contains, clear, iterator,
  * toArray, add (unsupported), remove, containsAll, removeAll, retainAll,
- * equals, hashCode.</td>
- * </tr>
+ * equals, hashCode.
+ * <p>
+ * <table border="1">
+ * <caption></caption>
  * <tr>
- * <td><b>Test Case Design</b></td>
+ * <th>Summary</th><td>Tests for the keySet() backing view: size, contains, clear, iterator,
+ * toArray, add (unsupported), remove, containsAll, removeAll, retainAll,
+ * equals, hashCode.</td></tr>
+ * <tr><td><b>Test Case Design</b></td>
  * <td>Verifies keySet is a live view backed by the map, and all operations
  * propagate correctly to the underlying MapAdapter.</td>
  * </tr>
@@ -39,10 +36,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet() size reflects map size.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet() size reflects map size.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet() size reflects map size.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify keySet is a live view of the map's keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Adds entries, verifies keySet.size() matches map.size().</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 3 entries.</td></tr>
@@ -61,10 +59,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.contains().
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.contains().</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.contains().</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Delegates to containsKey on the backing map.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Checks contains on keySet for present and absent keys.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with one entry.</td></tr>
@@ -81,10 +80,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.clear() backs into the map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.clear() backs into the map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.clear() backs into the map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Clearing keySet must clear the backing map.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Populates map, clears keySet, verifies map is empty.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with data.</td></tr>
@@ -102,10 +102,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet iterator remove backs map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet iterator remove backs map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet iterator remove backs map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Iterator.remove() on keySet must remove key from map.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Iterates keySet, removes first key, checks map.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
@@ -127,10 +128,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet iterator NoSuchElementException.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet iterator NoSuchElementException.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet iterator NoSuchElementException.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Calling next() beyond elements must throw NoSuchElementException.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Exhausts the iterator then calls next().</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with one entry.</td></tr>
@@ -147,10 +149,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet iterator IllegalStateException on remove before next.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet iterator IllegalStateException on remove before next.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet iterator IllegalStateException on remove before next.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Calling remove() without prior next() must throw IllegalStateException.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Creates iterator, calls remove() immediately.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with one entry.</td></tr>
@@ -166,10 +169,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet iterator double remove throws IllegalStateException.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet iterator double remove throws IllegalStateException.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet iterator double remove throws IllegalStateException.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Calling remove() twice without next() in between must throw.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls next(), remove(), then remove() again.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
@@ -188,10 +192,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.toArray().
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.toArray().</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.toArray().</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify toArray returns all keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Adds entries, converts keySet to array, checks length and contents.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
@@ -208,10 +213,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.toArray(Object[]) with a smaller array.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.toArray(Object[]) with a smaller array.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.toArray(Object[]) with a smaller array.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>When passed array is too small, a new array is created.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Passes a 0-length array to toArray.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
@@ -228,10 +234,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.toArray(Object[]) with a larger array sets trailing null.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.toArray(Object[]) with a larger array sets trailing null.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.toArray(Object[]) with a larger array sets trailing null.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>When passed array is larger, element after last is set to null.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Passes a 5-length array to toArray on a 2-element keySet.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
@@ -250,10 +257,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.add() throws UnsupportedOperation.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.add() throws UnsupportedOperation.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.add() throws UnsupportedOperation.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>keySet is not modifiable via add.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls add() on keySet.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -267,10 +275,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.addAll() throws UnsupportedOperation.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.addAll() throws UnsupportedOperation.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.addAll() throws UnsupportedOperation.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>keySet is not modifiable via addAll.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls addAll() on keySet.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -286,10 +295,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.remove() backs into map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.remove() backs into map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.remove() backs into map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Removing a key from the keySet must remove the mapping.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls keySet.remove(key), verifies map state.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
@@ -308,10 +318,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.remove() for absent key returns false.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.remove() for absent key returns false.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.remove() for absent key returns false.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Removing absent key should return false.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls keySet.remove() on non-existing key.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 1 entry.</td></tr>
@@ -327,10 +338,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.containsAll().
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.containsAll().</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.containsAll().</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify containsAll with subset of keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Creates second map with subset keys, checks containsAll.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with A, B, C.</td></tr>
@@ -353,10 +365,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.removeAll() backs into map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.removeAll() backs into map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.removeAll() backs into map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>removeAll on keySet must remove those keys from map.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Removes subset of keys via removeAll, verifies map.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with A, B, C.</td></tr>
@@ -379,10 +392,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.removeAll() returns false when nothing to remove.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.removeAll() returns false when nothing to remove.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.removeAll() returns false when nothing to remove.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>removeAll with disjoint keys does nothing.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Removes keys not present in map.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with A.</td></tr>
@@ -401,10 +415,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.retainAll() backs into map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.retainAll() backs into map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.retainAll() backs into map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>retainAll on keySet must keep only specified keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Retains only key A from map with A, B, C.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with A, B, C.</td></tr>
@@ -426,10 +441,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet.retainAll() returns false when all elements retained.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet.retainAll() returns false when all elements retained.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.retainAll() returns false when all elements retained.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>retainAll with superset does nothing.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Retains all keys already present.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with A.</td></tr>
@@ -449,10 +465,11 @@ public class MapAdapterKeySetTest {
     }
 
     /**
+     * Tests keySet equals and hashCode.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet equals and hashCode.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet equals and hashCode.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Two keySets from equivalent maps must be equal.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Creates two maps with same keys, compares keySets.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Two maps with identical keys.</td></tr>
@@ -469,5 +486,23 @@ public class MapAdapterKeySetTest {
         map2.put("B", "100");
         assertTrue(map.keySet().equals(map2.keySet()));
         assertEquals(map.keySet().hashCode(), map2.keySet().hashCode());
+    }
+
+    /**
+     * Tests keySet.toArray(null) throws NullPointerException.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet.toArray(null) throws NullPointerException.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>toArray(null) must throw NullPointerException.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls toArray(null) on keySet.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>NullPointerException is thrown.</td></tr>
+     * </table>
+     */
+    @Test(expected = NullPointerException.class)
+    public void testKeySetToArrayNullThrows() {
+        map.keySet().toArray(null);
     }
 }

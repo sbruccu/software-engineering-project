@@ -7,20 +7,16 @@ import myAdapter.*;
 import java.util.NoSuchElementException;
 
 /**
+ * Tests for iterator full traversal, empty-map iterators, remove-all-via-iteration,
+ * live-view consistency, and large map stress test.
+ * <p>
  * <table border="1">
- * <caption>Test Suite Documentation</caption>
+ * <caption></caption>
  * <tr>
- * <th>Section</th>
- * <th>Section description</th>
- * </tr>
- * <tr>
- * <td><b>Summary</b></td>
- * <td>Tests for iterator full traversal, empty-map iterators,
+ * <th>Summary</th><td>Tests for iterator full traversal, empty-map iterators,
  * remove-all-via-iteration, live-view consistency, and large map
- * stress test.</td>
- * </tr>
- * <tr>
- * <td><b>Test Case Design</b></td>
+ * stress test.</td></tr>
+ * <tr><td><b>Test Case Design</b></td>
  * <td>Verifies iterator contracts across all view types, live view propagation,
  * and MapAdapter scalability.</td>
  * </tr>
@@ -38,15 +34,12 @@ public class MapAdapterIteratorTest {
         map = new MapAdapter();
     }
 
-    // ========================================================================
-    // Iterator full traversal tests
-    // ========================================================================
-
     /**
+     * Tests keySet iterator traverses all keys.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests keySet iterator traverses all keys.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet iterator traverses all keys.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Full iteration must visit every key exactly once.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Iterates all keys, counts them.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 3 entries.</td></tr>
@@ -71,10 +64,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests values iterator traverses all values.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests values iterator traverses all values.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests values iterator traverses all values.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Full iteration must visit every value exactly once.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Iterates all values, counts them.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 3 entries.</td></tr>
@@ -99,10 +93,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests entrySet iterator traverses all entries.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests entrySet iterator traverses all entries.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests entrySet iterator traverses all entries.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Full iteration must visit every entry exactly once.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Iterates all entries, verifies each is an HEntry with valid key/value.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 3 entries.</td></tr>
@@ -128,10 +123,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests iterator on empty map hasNext returns false.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests iterator on empty map hasNext returns false.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests iterator on empty map hasNext returns false.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: empty map iterator.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Gets keySet iterator on empty map, checks hasNext.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -147,10 +143,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests next() on empty map keySet iterator throws.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests next() on empty map keySet iterator throws.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests next() on empty map keySet iterator throws.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: next on empty iterator.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls next() on empty keySet iterator.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -164,10 +161,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests next() on empty map values iterator throws.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests next() on empty map values iterator throws.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests next() on empty map values iterator throws.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: next on empty iterator.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls next() on empty values iterator.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -181,10 +179,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests next() on empty map entrySet iterator throws.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests next() on empty map entrySet iterator throws.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests next() on empty map entrySet iterator throws.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: next on empty iterator.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls next() on empty entrySet iterator.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -198,10 +197,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests removing all elements via keySet iterator empties the map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests removing all elements via keySet iterator empties the map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removing all elements via keySet iterator empties the map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Iterate and remove every element via keySet iterator.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Iterates keySet, removes each element, verifies map is empty.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 3 entries.</td></tr>
@@ -224,10 +224,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests removing all elements via entrySet iterator empties the map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests removing all elements via entrySet iterator empties the map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removing all elements via entrySet iterator empties the map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Iterate and remove every element via entrySet iterator.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Iterates entrySet, removes each element, verifies map is empty.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with 3 entries.</td></tr>
@@ -250,10 +251,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests that keySet reflects map changes.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests that keySet reflects map changes.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests that keySet reflects map changes.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>keySet is a live view: adding to map must be visible in keySet.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Gets keySet, then adds to map, checks keySet size increases.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty map, keySet obtained.</td></tr>
@@ -271,10 +273,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests that values reflects map changes.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests that values reflects map changes.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests that values reflects map changes.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>values is a live view: adding to map must be visible in values.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Gets values, then adds to map, checks values size increases.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty map, values obtained.</td></tr>
@@ -292,10 +295,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Tests that entrySet reflects map changes.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests that entrySet reflects map changes.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests that entrySet reflects map changes.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>entrySet is a live view: adding to map must be visible in entrySet.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Gets entrySet, then adds to map, checks entrySet size increases.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty map, entrySet obtained.</td></tr>
@@ -312,10 +316,11 @@ public class MapAdapterIteratorTest {
     }
 
     /**
+     * Stress test with many entries.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Stress test with many entries.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Stress test with many entries.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify map handles many insertions and retrievals correctly.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Inserts 1000 entries, verifies size, containsKey, get, then removes all.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -339,5 +344,69 @@ public class MapAdapterIteratorTest {
         }
         assertEquals(0, map.size());
         assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests iterator double remove throws IllegalStateException.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests iterator double remove throws IllegalStateException.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Calling remove() twice without next() must throw.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls next(), remove(), then remove() again.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with 1 entry.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>IllegalStateException is thrown on second remove.</td></tr>
+     * </table>
+     */
+    @Test(expected = IllegalStateException.class)
+    public void testIteratorDoubleRemoveThrows() {
+        map.put("A", "1");
+        HIterator it = map.keySet().iterator();
+        it.next();
+        it.remove();
+        it.remove(); // should throw
+    }
+
+    /**
+     * Tests entrySet iterator remove before next throws IllegalStateException.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests entrySet iterator remove before next throws IllegalStateException.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Calling remove() without prior next() must throw.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Creates entrySet iterator, calls remove() immediately.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with one entry.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>IllegalStateException is thrown.</td></tr>
+     * </table>
+     */
+    @Test(expected = IllegalStateException.class)
+    public void testEntrySetIteratorRemoveBeforeNextThrows() {
+        map.put("A", "1");
+        HIterator it = map.entrySet().iterator();
+        it.remove(); // should throw
+    }
+
+    /**
+     * Tests values iterator double remove throws IllegalStateException.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests values iterator double remove throws IllegalStateException.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Calling remove() twice without next() must throw.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls next(), remove(), then remove() again on values iterator.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with one entry.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>IllegalStateException is thrown on second remove.</td></tr>
+     * </table>
+     */
+    @Test(expected = IllegalStateException.class)
+    public void testValuesIteratorDoubleRemoveThrows() {
+        map.put("A", "1");
+        HIterator it = map.values().iterator();
+        it.next();
+        it.remove();
+        it.remove(); // should throw
     }
 }

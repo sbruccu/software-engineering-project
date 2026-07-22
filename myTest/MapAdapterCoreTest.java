@@ -6,19 +6,15 @@ import static org.junit.Assert.*;
 import myAdapter.*;
 
 /**
+ * Tests for core Map operations: size, isEmpty, put, get, remove, clear,
+ * containsKey, containsValue, putAll.
+ * <p>
  * <table border="1">
- * <caption>Test Suite Documentation</caption>
+ * <caption></caption>
  * <tr>
- * <th>Section</th>
- * <th>Section description</th>
- * </tr>
- * <tr>
- * <td><b>Summary</b></td>
- * <td>Tests for core Map operations: size, isEmpty, put, get, remove, clear,
- * containsKey, containsValue, putAll.</td>
- * </tr>
- * <tr>
- * <td><b>Test Case Design</b></td>
+ * <th>Summary</th><td>Tests for core Map operations: size, isEmpty, put, get, remove, clear,
+ * containsKey, containsValue, putAll.</td></tr>
+ * <tr><td><b>Test Case Design</b></td>
  * <td>Verifies basic CRUD functionality and boundary conditions of MapAdapter.</td>
  * </tr>
  * </table>
@@ -36,10 +32,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests size() and isEmpty() on a fresh empty map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests size() and isEmpty() on a fresh empty map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests size() and isEmpty() on a fresh empty map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: verify initial state of a new MapAdapter.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls size() and isEmpty() on an empty map.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>MapAdapter just created.</td></tr>
@@ -54,10 +51,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests basic put and get functionalities.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests basic put and get functionalities.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests basic put and get functionalities.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify MapAdapter correctly stores and retrieves pairs.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Inserts two key-value pairs, verifies size and retrieval.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -76,10 +74,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests put() overwrites existing key and returns old value.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests put() overwrites existing key and returns old value.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests put() overwrites existing key and returns old value.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify put replaces existing mapping and returns previous value.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Puts key twice with different values. Checks return value and final state.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -98,10 +97,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests get() for a key not present in the map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests get() for a key not present in the map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests get() for a key not present in the map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify get returns null for absent keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls get() with a key that was never inserted.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -115,10 +115,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests remove() functionality.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests remove() functionality.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() functionality.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Ensures remove() deletes the mapping and returns the previous value.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Puts an element, removes it, verifies return value and new size.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with one element.</td></tr>
@@ -136,10 +137,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests remove() on an absent key.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests remove() on an absent key.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on an absent key.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify remove returns null when key is not present.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls remove() on a key never inserted.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -153,10 +155,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
-     * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests clear() functionality.</td></tr>
+     * Tests clear() functionality.
+     * <p>
+     * <table border="1">   
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() functionality.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Ensures clear() removes all mappings from the map.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Puts elements, calls clear(), verifies size is 0.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with elements.</td></tr>
@@ -175,10 +178,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests clear() on an already empty map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests clear() on an already empty map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on an already empty map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: clearing an empty map should not throw.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls clear() on a new empty map.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
@@ -194,10 +198,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests containsKey() functionality.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests containsKey() functionality.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsKey() functionality.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Ensures containsKey returns true for present and false for absent keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Puts an element, checks containsKey for present and absent keys.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with one element.</td></tr>
@@ -213,10 +218,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests containsValue() functionality.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests containsValue() functionality.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsValue() functionality.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Ensures containsValue returns true for present and false for absent values.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Puts an element, checks containsValue for present and absent values.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with one element.</td></tr>
@@ -232,10 +238,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests putAll() functionality.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests putAll() functionality.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests putAll() functionality.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Ensures putAll copies all mappings from the specified map.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Creates a second map, adds elements, calls putAll on the first map.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Two MapAdapters.</td></tr>
@@ -255,10 +262,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests putAll() with overlapping keys overwrites existing mappings.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests putAll() with overlapping keys overwrites existing mappings.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests putAll() with overlapping keys overwrites existing mappings.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Verify putAll replaces values for shared keys.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Map has key A=1, putAll with A=99, verify A=99.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with key A.</td></tr>
@@ -279,10 +287,11 @@ public class MapAdapterCoreTest {
     }
 
     /**
+     * Tests putAll() with an empty source map.
+     * <p>
      * <table border="1">
-     * <caption>Test Method Documentation</caption>
-     * <tr><th>Section</th><th>Section description</th></tr>
-     * <tr><td><b>Summary</b></td><td>Tests putAll() with an empty source map.</td></tr>
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests putAll() with an empty source map.</td></tr>
      * <tr><td><b>Test Case Design</b></td><td>Boundary: putAll from empty map does nothing.</td></tr>
      * <tr><td><b>Test Description</b></td><td>Calls putAll with an empty MapAdapter.</td></tr>
      * <tr><td><b>Pre-Condition</b></td><td>Map with one element.</td></tr>
@@ -295,5 +304,46 @@ public class MapAdapterCoreTest {
         map.put("A", "1");
         map.putAll(new MapAdapter());
         assertEquals(1, map.size());
+    }
+
+    /**
+     * Tests get() on a removed key returns null.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests get() on a removed key returns null.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>After remove, the key must no longer be retrievable.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Puts a key, removes it, then calls get() on it.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with one entry.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>get() returns null.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testGetAfterRemoveReturnsNull() {
+        map.put("A", "1");
+        map.remove("A");
+        assertNull(map.get("A"));
+    }
+
+    /**
+     * Tests containsKey() and containsValue() return false after clear().
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsKey() and containsValue() return false after clear().</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>After clear, no key or value should be found.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Populates the map, clears it, checks containsKey and containsValue.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Both containsKey and containsValue return false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsKeyAndValueAfterClear() {
+        map.put("A", "1");
+        map.clear();
+        assertFalse(map.containsKey("A"));
+        assertFalse(map.containsValue("1"));
     }
 }
