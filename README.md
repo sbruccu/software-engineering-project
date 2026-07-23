@@ -50,3 +50,8 @@ javadoc -d docs -cp ".:junit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myAda
 ```
 javadoc -d docs -cp ";junit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myAdapter myTest
 ```
+
+### Project Structure
+- `myAdapter/`: Contains the `MapAdapter` implementation and related interfaces (`HMap`, `HSet`, `HCollection`, `HIterator`).
+- `myTest/`: Contains the JUnit test suite ensuring full compatibility with J2SE 1.4.2 specifications and CLDC 1.1 limitations.
+- `JUnit/`: Contains the required testing libraries.
