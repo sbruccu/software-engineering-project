@@ -551,4 +551,26 @@ public class MapAdapterEntrySetTest {
         assertEquals("V", oldVal);
         assertEquals("NEW", map.get("K"));
     }
+
+    /**
+     * Tests entrySet.toArray(Object[]) with an exactly sized array.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests entrySet.toArray(Object[]) with an exactly sized array.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>toArray with exact size must not allocate a new array.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Passes an array of exact size to toArray().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with 2 entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returned array is the exact same instance passed in.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEntrySetToArrayExactSize() {
+        map.put("A", "1");
+        map.put("B", "2");
+        Object[] input = new Object[2];
+        Object[] output = map.entrySet().toArray(input);
+        assertSame(input, output);
+    }
 }

@@ -409,4 +409,35 @@ public class MapAdapterIteratorTest {
         it.remove();
         it.remove(); // should throw
     }
+
+    /**
+     * Tests iterator behavior during concurrent modifications.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests iterator behavior during concurrent modifications.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Enumeration-backed iterators in CLDC 1.1 are not fail-fast.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Modifies the map while iterating to ensure no ConcurrentModificationException is thrown.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is modified.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Iteration completes without throwing exceptions.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testConcurrentModificationDoesNotThrow() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HIterator it = map.keySet().iterator();
+        
+        // Modify the map during iteration
+        map.put("C", "3");
+        
+        // This would throw ConcurrentModificationException in J2SE 5.0+, 
+        // but in CLDC 1.1 (Enumeration backed), it does not fail-fast.
+        while (it.hasNext()) {
+            it.next(); 
+        }
+        
+        assertEquals(3, map.size());
+    }
 }

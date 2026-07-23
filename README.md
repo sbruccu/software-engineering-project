@@ -44,11 +44,11 @@ java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapte
 ### Documentation
 - **Unix**
 ```
-javadoc -d docs -cp ".:junit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myAdapter myTest
+javadoc -d docs -Xdoclint:none -cp ".:junit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myAdapter myTest
 ```
 - **Windows**
 ```
-javadoc -d docs -cp ";junit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myAdapter myTest
+javadoc -d docs -Xdoclint:none -cp ";junit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myAdapter myTest
 ```
 
 ### Project Structure

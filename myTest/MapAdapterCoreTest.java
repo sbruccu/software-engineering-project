@@ -366,4 +366,74 @@ public class MapAdapterCoreTest {
         map.clear();
         assertNull(map.get("A"));
     }
+
+    /**
+     * Tests identity vs equality for map keys.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests identity vs equality for map keys.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Hashtable relies on .equals(), not ==.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Puts two different String instances with the same value and verifies they overwrite.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map has 1 entry.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Second put returns first value, size is 1.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeyEqualityVsIdentity() {
+        String key1 = new String("A");
+        String key2 = new String("A");
+        assertNotSame(key1, key2); // Ensure they are different instances
+        
+        assertNull(map.put(key1, "1"));
+        assertEquals("1", map.put(key2, "2"));
+        assertEquals(1, map.size());
+        assertEquals("2", map.get("A"));
+    }
+
+    /**
+     * Stress test for MapAdapter.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Stress test for MapAdapter.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Puts a large number of elements to trigger rehashing.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Inserts 100000 entries, removes 50000, checks size.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map has 50000 entries.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Size is accurately maintained under heavy load.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testStressLoad() {
+        int limit = 100000;
+        for (int i = 0; i < limit; i++) {
+            map.put(String.valueOf(i), i);
+        }
+        assertEquals(limit, map.size());
+        for (int i = 0; i < limit / 2; i++) {
+            map.remove(String.valueOf(i));
+        }
+        assertEquals(limit / 2, map.size());
+    }
+
+    /**
+     * Tests self-referential map hashCode throws StackOverflowError.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests self-referential map hashCode throws StackOverflowError.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Corner case: map containing itself.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Puts the map into itself and calls hashCode().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map contains itself.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>StackOverflowError is thrown.</td></tr>
+     * </table>
+     */
+    @Test(expected = StackOverflowError.class)
+    public void testSelfReferentialHashCode() {
+        map.put("self", map);
+        map.hashCode();
+    }
 }
