@@ -44,7 +44,7 @@ java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterIteratorTest
 ### Documentation
 - **Unix**
 ```
-javadoc -d docs -Xdoclint:none -sourcepath . -cp ":bin:JUnit/*" myAdapter myTest
+javadoc -d docs -Xdoclint:none -sourcepath . -cp "bin:JUnit/*" myAdapter myTest
 ```
 - **Windows**
 ```
