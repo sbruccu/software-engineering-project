@@ -156,4 +156,76 @@ public class MapAdapterNullConstraintTest {
     public void testPutAllNullThrows() {
         map.putAll(null);
     }
+
+    /**
+     * Tests NullPointerException for keySet().contains(null).
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests NullPointerException for keySet().contains(null).</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>CLDC 1.1 constraint: null not allowed in Hashtable-backed operations.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls keySet().contains(null).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>NullPointerException is thrown.</td></tr>
+     * </table>
+     */
+    @Test(expected = NullPointerException.class)
+    public void testKeySetContainsNullThrows() {
+        map.keySet().contains(null);
+    }
+
+    /**
+     * Tests NullPointerException for values().contains(null).
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests NullPointerException for values().contains(null).</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>CLDC 1.1 constraint: null not allowed in Hashtable-backed operations.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls values().contains(null).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>NullPointerException is thrown.</td></tr>
+     * </table>
+     */
+    @Test(expected = NullPointerException.class)
+    public void testValuesContainsNullThrows() {
+        map.values().contains(null);
+    }
+
+    /**
+     * Tests keySet().remove(null) returns false.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests keySet().remove(null) returns false.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>keySet remove performs an explicit null-guard and returns false for null arguments.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls keySet().remove(null) on an empty map.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>remove(null) returns false without throwing.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRemoveNullReturnsFalse() {
+        assertFalse(map.keySet().remove(null));
+    }
+
+    /**
+     * Tests values().remove(null) returns false.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests values().remove(null) returns false.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>values remove performs an explicit null-guard and returns false for null arguments.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls values().remove(null) on an empty map.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty MapAdapter.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>remove(null) returns false without throwing.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveNullReturnsFalse() {
+        assertFalse(map.values().remove(null));
+    }
 }

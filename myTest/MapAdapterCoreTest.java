@@ -346,4 +346,24 @@ public class MapAdapterCoreTest {
         assertFalse(map.containsKey("A"));
         assertFalse(map.containsValue("1"));
     }
+
+    /**
+     * Tests get() on any key after clear() returns null.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests get() on any key after clear() returns null.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>After clear, all keys are gone so get must return null.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Populates the map, clears it, then calls get() on a previously present key.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entry A=1.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>get("A") returns null.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testGetAfterClearReturnsNull() {
+        map.put("A", "1");
+        map.clear();
+        assertNull(map.get("A"));
+    }
 }

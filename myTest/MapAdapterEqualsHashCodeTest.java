@@ -175,4 +175,43 @@ public class MapAdapterEqualsHashCodeTest {
     public void testHashCodeEmptyMap() {
         assertEquals(0, map.hashCode());
     }
+
+    /**
+     * Tests equals(null) returns false without throwing.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests equals(null) returns false without throwing.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>equals(null) must return false per the Map contract.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls map.equals(null) on a populated map.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with one entry.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals(null) returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsNull() {
+        map.put("A", "1");
+        assertFalse(map.equals(null));
+    }
+
+    /**
+     * Tests hashCode() is consistent across multiple calls on the same map.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hashCode() is consistent across multiple calls on the same map.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>hashCode must return the same value each time it is called on an unchanged map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hashCode() twice on the same map, compares results.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>MapAdapter with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Both calls return the same value.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testHashCodeConsistency() {
+        map.put("A", "1");
+        map.put("B", "2");
+        assertEquals(map.hashCode(), map.hashCode());
+    }
 }
