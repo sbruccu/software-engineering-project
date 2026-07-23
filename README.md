@@ -10,17 +10,17 @@ javac -cp "JUnit/*" myAdapter/*.java myTest/*.java
 ```
 
 ### Running all Tests 
-(Unix)
+- **Unix**
 ```
 java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.TestRunner
 ```
-(Windows)
+- **Windows**
 ```
 java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.TestRunner
 ```
 
 ### Single Test Run 
-(Unix)
+- **Unix**
 ```
 java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterCoreTest
 java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterNullConstraintTest
@@ -30,7 +30,7 @@ java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapte
 java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterEntrySetTest
 java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterIteratorTest
 ```
-(Windows)
+- **Windows**
 ```
 java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterCoreTest
 java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterNullConstraintTest
@@ -42,11 +42,11 @@ java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapte
 ``` 
 
 ### Documentation
-(Unix)
+- **Unix**
 ```
 javadoc -d docs -cp ".:junit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myAdapter myTest
 ```
-(Windows)
+- **Windows**
 ```
 javadoc -d docs -cp ";junit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myAdapter myTest
 ```
