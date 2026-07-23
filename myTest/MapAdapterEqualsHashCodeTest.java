@@ -17,6 +17,9 @@ import myAdapter.*;
  * hashCode consistency for MapAdapter.</td>
  * </tr>
  * </table>
+ *
+ * @author Andrea Cocurullo, 2147723
+ * @version 1.0
  */
 public class MapAdapterEqualsHashCodeTest {
 

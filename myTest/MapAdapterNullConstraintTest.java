@@ -18,6 +18,9 @@ import myAdapter.*;
  * <td>Verifies NullPointerException is thrown for all operations receiving null.</td>
  * </tr>
  * </table>
+ *
+ * @author Andrea Cocurullo, 2147723
+ * @version 1.0
  */
 public class MapAdapterNullConstraintTest {
 

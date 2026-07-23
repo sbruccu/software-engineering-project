@@ -22,6 +22,9 @@ import java.util.NoSuchElementException;
  * propagate correctly to the underlying MapAdapter.</td>
  * </tr>
  * </table>
+ *
+ * @author Andrea Cocurullo, 2147723
+ * @version 1.0
  */
 public class MapAdapterKeySetTest {
 

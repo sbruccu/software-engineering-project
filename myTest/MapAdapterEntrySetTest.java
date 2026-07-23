@@ -24,6 +24,9 @@ import java.util.NoSuchElementException;
  * to the J2SE 1.4.2 Map.Entry contract.</td>
  * </tr>
  * </table>
+ *
+ * @author Andrea Cocurullo, 2147723
+ * @version 1.0
  */
 public class MapAdapterEntrySetTest {
 

@@ -18,6 +18,9 @@ import myAdapter.*;
  * <td>Verifies basic CRUD functionality and boundary conditions of MapAdapter.</td>
  * </tr>
  * </table>
+ *
+ * @author Andrea Cocurullo, 2147723
+ * @version 1.0
  */
 public class MapAdapterCoreTest {
 

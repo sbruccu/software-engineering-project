@@ -6,49 +6,49 @@ This project implements the MapAdapter class, which adapts the Hashtable class t
 
 ### Compilation
 ```
-javac -cp "JUnit/*" myAdapter/*.java myTest/*.java
+javac -d bin -cp "JUnit/*" myAdapter/*.java myTest/*.java
 ```
 
 ### Running all Tests 
 - **Unix**
 ```
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.TestRunner
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.TestRunner
 ```
 - **Windows**
 ```
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.TestRunner
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.TestRunner
 ```
 
 ### Single Test Run 
 - **Unix**
 ```
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterCoreTest
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterNullConstraintTest
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterEqualsHashCodeTest
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterKeySetTest
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterValuesTest
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterEntrySetTest
-java -cp ".:JUnit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterIteratorTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterCoreTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterNullConstraintTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterEqualsHashCodeTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterKeySetTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterValuesTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterEntrySetTest
+java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterIteratorTest
 ```
 - **Windows**
 ```
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterCoreTest
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterNullConstraintTest
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterEqualsHashCodeTest
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterKeySetTest
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterValuesTest
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterEntrySetTest
-java -cp ".;JUnit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myTest.MapAdapterIteratorTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterCoreTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterNullConstraintTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterEqualsHashCodeTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterKeySetTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterValuesTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterEntrySetTest
+java -cp ";bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterIteratorTest
 ``` 
 
 ### Documentation
 - **Unix**
 ```
-javadoc -d docs -Xdoclint:none -cp ".:junit/junit-4.13.2.jar:JUnit/hamcrest-core-1.3.jar" myAdapter myTest
+javadoc -d docs -Xdoclint:none -sourcepath . -cp ".:bin:JUnit/*" myAdapter myTest
 ```
 - **Windows**
 ```
-javadoc -d docs -Xdoclint:none -cp ";junit/junit-4.13.2.jar;JUnit/hamcrest-core-1.3.jar" myAdapter myTest
+javadoc -d docs -Xdoclint:none -sourcepath . -cp ";bin;JUnit/*" myAdapter myTest
 ```
 
 ### Project Structure

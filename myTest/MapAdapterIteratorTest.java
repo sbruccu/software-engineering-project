@@ -21,6 +21,9 @@ import java.util.NoSuchElementException;
  * and MapAdapter scalability.</td>
  * </tr>
  * </table>
+ *
+ * @author Andrea Cocurullo, 2147723
+ * @version 1.0
  */
 public class MapAdapterIteratorTest {
 
