@@ -3,6 +3,7 @@ This project implements the MapAdapter class, which adapts the Hashtable class t
 
 ### Requirements
 - **Java Development Kit (JDK)**: Required to compile and run the code.
+- **JUnit 4.13.2**: Required for testing. The necessary `.jar` files are included in the `JUnit/` directory.
 
 ### Compilation
 ```
@@ -12,11 +13,11 @@ javac -d bin -cp "JUnit/*" myAdapter/*.java myTest/*.java
 ### Running all Tests 
 - **Unix**
 ```
-java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.TestRunner
+java -cp "bin:JUnit/*" myTest.TestRunner
 ```
 - **Windows**
 ```
-java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.TestRunner
+java -cp "bin;JUnit\*" myTest.TestRunner
 ```
 
 ### Single Test Run 
