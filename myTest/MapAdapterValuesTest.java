@@ -408,4 +408,92 @@ public class MapAdapterValuesTest {
         Object[] output = map.values().toArray(input);
         assertSame(input, output);
     }
+
+    /**
+     * Tests removeAll with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removeAll with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Passes an empty HCollection to removeAll.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Checks that removeAll returns false and doesn't modify the map.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveAllEmptyCollection() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HCollection emptyColl = new MapAdapter().values();
+        assertFalse(map.values().removeAll(emptyColl));
+        assertEquals(2, map.size());
+    }
+
+    /**
+     * Tests retainAll with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests retainAll with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Passes an empty HCollection to retainAll.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Checks that retainAll clears the map and returns true.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true, map becomes empty.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRetainAllEmptyCollection() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HCollection emptyColl = new MapAdapter().values();
+        assertTrue(map.values().retainAll(emptyColl));
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests removeAll with incompatible types.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removeAll with incompatible types.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Passes a collection of Integers to a String values collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Verifies that removeAll gracefully ignores them.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String values.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveAllIncompatibleType() {
+        map.put("A", "1");
+        HMap otherMap = new MapAdapter();
+        otherMap.put("K", new Integer(42));
+        assertFalse(map.values().removeAll(otherMap.values()));
+        assertEquals(1, map.size());
+    }
+
+    /**
+     * Tests retainAll with incompatible types.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests retainAll with incompatible types.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Passes a collection of Integers to a String values collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Verifies that retainAll clears the map since no elements match.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String values.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRetainAllIncompatibleType() {
+        map.put("A", "1");
+        HMap otherMap = new MapAdapter();
+        otherMap.put("K", new Integer(42));
+        assertTrue(map.values().retainAll(otherMap.values()));
+        assertTrue(map.isEmpty());
+    }
 }

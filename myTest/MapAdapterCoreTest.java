@@ -439,4 +439,110 @@ public class MapAdapterCoreTest {
         map.put("self", map);
         map.hashCode();
     }
+
+    /**
+     * A simple key class that intentionally causes hash collisions.
+     */
+    private static class CollidingKey {
+        private String id;
+        public CollidingKey(String id) { this.id = id; }
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            CollidingKey that = (CollidingKey) o;
+            return id != null ? id.equals(that.id) : that.id == null;
+        }
+        public int hashCode() {
+            return 1; // Constant hash code forces collisions
+        }
+    }
+
+    /**
+     * Tests behavior with many hash collisions.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests behavior with many hash collisions.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Inserts keys with the exact same hash code.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Verifies map logic holds up when Hashtable lists are heavily used.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map contains 1000 colliding elements.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>get() and remove() work correctly despite collisions.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testHashCollisions() {
+        for (int i = 0; i < 1000; i++) {
+            map.put(new CollidingKey("K" + i), i);
+        }
+        assertEquals(1000, map.size());
+        assertEquals(500, map.get(new CollidingKey("K500")));
+        map.remove(new CollidingKey("K500"));
+        assertNull(map.get(new CollidingKey("K500")));
+        assertEquals(999, map.size());
+    }
+
+    /**
+     * Tests empty strings and special characters.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests empty strings and special characters.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Uses unusual string values.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Puts and gets empty strings and escape characters.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map contains these special elements.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Proper retrieval.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testSpecialCharacters() {
+        map.put("", "empty");
+        map.put("\n\t\r", "");
+        
+        assertEquals("empty", map.get(""));
+        assertEquals("", map.get("\n\t\r"));
+    }
+
+    /**
+     * Tests putAll with itself.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests putAll with itself.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>map.putAll(map).</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Checks if putting a map into itself throws exception or succeeds safely.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with 2 elements.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map size unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>No changes to the map.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testPutAllSelf() {
+        map.put("A", "1");
+        map.put("B", "2");
+        map.putAll(map);
+        assertEquals(2, map.size());
+    }
+
+    /**
+     * Tests exact return values of put and remove.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests exact return values of put and remove.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Monitors return values for new keys vs existing keys.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Puts a new key (expects null), overwrites (expects old), removes (expects old), removes absent (expects null).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Return values match the specification exactly.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testPutAndRemoveReturnValues() {
+        assertNull(map.put("K1", "V1")); // new key returns null
+        assertEquals("V1", map.put("K1", "V2")); // existing key returns old value
+        assertEquals("V2", map.remove("K1")); // removing existing returns old value
+        assertNull(map.remove("K1")); // removing absent returns null
+    }
 }

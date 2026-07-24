@@ -1,4 +1,5 @@
 docs/
+bin/
 .DS*
 *.class
 *.pdf

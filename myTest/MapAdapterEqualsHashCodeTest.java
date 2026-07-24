@@ -217,4 +217,49 @@ public class MapAdapterEqualsHashCodeTest {
         map.put("B", "2");
         assertEquals(map.hashCode(), map.hashCode());
     }
+
+    /**
+     * A simple wrapper implementation of HMap used to test cross-implementation equality.
+     */
+    private static class DummyMap implements HMap {
+        private HMap internal = new MapAdapter();
+        public int size() { return internal.size(); }
+        public boolean isEmpty() { return internal.isEmpty(); }
+        public boolean containsKey(Object key) { return internal.containsKey(key); }
+        public boolean containsValue(Object value) { return internal.containsValue(value); }
+        public Object get(Object key) { return internal.get(key); }
+        public Object put(Object key, Object value) { return internal.put(key, value); }
+        public Object remove(Object key) { return internal.remove(key); }
+        public void putAll(HMap t) { internal.putAll(t); }
+        public void clear() { internal.clear(); }
+        public HSet keySet() { return internal.keySet(); }
+        public HCollection values() { return internal.values(); }
+        public HSet entrySet() { return internal.entrySet(); }
+        // We do NOT override equals and hashCode so we can test MapAdapter.equals(DummyMap)
+    }
+    
+    /**
+     * Tests equals against a completely different implementation of HMap.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests equals against a completely different implementation of HMap.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Compares MapAdapter with a DummyMap wrapper.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Verifies equals() works correctly across implementations.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Two maps of different classes with the same entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>None.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>equals() returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEqualsCrossImplementation() {
+        map.put("A", "1");
+        map.put("B", "2");
+        
+        HMap dummy = new DummyMap();
+        dummy.put("A", "1");
+        dummy.put("B", "2");
+        
+        assertTrue(map.equals(dummy));
+    }
 }

@@ -16,7 +16,7 @@ java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.TestRunner
 ```
 - **Windows**
 ```
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.TestRunner
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.TestRunner
 ```
 
 ### Single Test Run 
@@ -32,13 +32,13 @@ java -cp "bin:JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterIteratorTest
 ```
 - **Windows**
 ```
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterCoreTest
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterNullConstraintTest
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterEqualsHashCodeTest
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterKeySetTest
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterValuesTest
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterEntrySetTest
-java -cp "bin;JUnit/*" org.junit.runner.JUnitCore myTest.MapAdapterIteratorTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterCoreTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterNullConstraintTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterEqualsHashCodeTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterKeySetTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterValuesTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterEntrySetTest
+java -cp "bin;JUnit\*" org.junit.runner.JUnitCore myTest.MapAdapterIteratorTest
 ``` 
 
 ### Documentation
@@ -48,7 +48,7 @@ javadoc -d docs -Xdoclint:none -sourcepath . -cp "bin:JUnit/*" myAdapter myTest
 ```
 - **Windows**
 ```
-javadoc -d docs -Xdoclint:none -sourcepath . -cp "bin;JUnit/*" myAdapter myTest
+javadoc -d docs -Xdoclint:none -sourcepath . -cp "bin;JUnit\*" myAdapter myTest
 ```
 
 ### Project Structure
