@@ -618,4 +618,344 @@ public class MapAdapterKeySetTest {
         assertTrue(map.keySet().retainAll(otherMap.keySet()));
         assertTrue(map.isEmpty());
     }
+
+    /**
+     * Tests isEmpty() on keySet when map is empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests isEmpty() on keySet when map is empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks isEmpty on an empty map's keySet.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls isEmpty().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetIsEmptyWhenMapEmpty() {
+        assertTrue(map.keySet().isEmpty());
+    }
+
+    /**
+     * Tests isEmpty() on keySet when map is not empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests isEmpty() on keySet when map is not empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks isEmpty on a populated map's keySet.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls isEmpty().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetIsEmptyWhenMapNonEmpty() {
+        map.put("A", "1");
+        assertFalse(map.keySet().isEmpty());
+    }
+
+    /**
+     * Tests contains() on keySet for an existing key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests contains() on keySet for an existing key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks contains for a key present in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls contains().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetContainsExisting() {
+        map.put("A", "1");
+        assertTrue(map.keySet().contains("A"));
+    }
+
+    /**
+     * Tests contains() on keySet for an absent key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests contains() on keySet for an absent key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks contains for a key not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls contains().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetContainsAbsent() {
+        map.put("A", "1");
+        assertFalse(map.keySet().contains("B"));
+    }
+
+    /**
+     * Tests contains() on keySet with a wrong type.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests contains() on keySet with a wrong type.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks contains using an Integer.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls contains(Integer).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String keys.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetContainsWrongType() {
+        map.put("A", "1");
+        assertFalse(map.keySet().contains(new Integer(1)));
+    }
+
+    /**
+     * Tests remove() on keySet for an existing key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on keySet for an existing key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a key that exists.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRemoveExisting() {
+        map.put("A", "1");
+        assertTrue(map.keySet().remove("A"));
+    }
+
+    /**
+     * Tests remove() on keySet for an absent key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on keySet for an absent key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a key not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRemoveAbsent() {
+        map.put("A", "1");
+        assertFalse(map.keySet().remove("B"));
+    }
+
+    /**
+     * Tests remove() on keySet with a wrong type.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on keySet with a wrong type.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes using an Integer.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove(Integer).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String keys.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRemoveWrongType() {
+        map.put("A", "1");
+        assertFalse(map.keySet().remove(new Integer(1)));
+    }
+
+    /**
+     * Tests clear() on keySet when empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on keySet when empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Clears an empty keySet.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls clear().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map remains empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>No exceptions.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetClearEmpty() {
+        map.keySet().clear();
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests clear() on keySet when non-empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on keySet when non-empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Clears a populated keySet.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls clear().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Map size is 0.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetClearNonEmpty() {
+        map.put("A", "1");
+        map.keySet().clear();
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests containsAll() with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsAll() with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks if keySet contains all elements of an empty collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsAll on an empty HSet.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetContainsAllEmpty() {
+        map.put("A", "1");
+        HSet empty = new MapAdapter().keySet();
+        assertTrue(map.keySet().containsAll(empty));
+    }
+
+    /**
+     * Tests containsAll() with a subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsAll() with a subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks if keySet contains a subset of its keys.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsAll with a subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetContainsAllSubset() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HMap other = new MapAdapter();
+        other.put("A", "1");
+        assertTrue(map.keySet().containsAll(other.keySet()));
+    }
+
+    /**
+     * Tests containsAll() with a non-subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsAll() with a non-subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks if keySet contains elements not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsAll with a non-subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetContainsAllNonSubset() {
+        map.put("A", "1");
+        HMap other = new MapAdapter();
+        other.put("C", "3");
+        assertFalse(map.keySet().containsAll(other.keySet()));
+    }
+
+    /**
+     * Tests removeAll() with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removeAll() with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes an empty collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls removeAll with an empty set.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRemoveAllEmpty() {
+        map.put("A", "1");
+        HSet empty = new MapAdapter().keySet();
+        assertFalse(map.keySet().removeAll(empty));
+    }
+
+    /**
+     * Tests removeAll() with a subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removeAll() with a subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a subset of keys.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls removeAll with a subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Subset removed.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRemoveAllSubset() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HMap other = new MapAdapter();
+        other.put("A", "1");
+        assertTrue(map.keySet().removeAll(other.keySet()));
+        assertFalse(map.containsKey("A"));
+    }
+
+    /**
+     * Tests retainAll() with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests retainAll() with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Retains an empty collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls retainAll with an empty set.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRetainAllEmpty() {
+        map.put("A", "1");
+        HSet empty = new MapAdapter().keySet();
+        assertTrue(map.keySet().retainAll(empty));
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests retainAll() with a subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests retainAll() with a subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Retains a subset of keys.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls retainAll with a subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Only subset retained.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetRetainAllSubset() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HMap other = new MapAdapter();
+        other.put("A", "1");
+        assertTrue(map.keySet().retainAll(other.keySet()));
+        assertFalse(map.containsKey("B"));
+    }
 }

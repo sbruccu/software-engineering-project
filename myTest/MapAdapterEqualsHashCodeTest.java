@@ -235,7 +235,7 @@ public class MapAdapterEqualsHashCodeTest {
         public HSet keySet() { return internal.keySet(); }
         public HCollection values() { return internal.values(); }
         public HSet entrySet() { return internal.entrySet(); }
-        // We do NOT override equals and hashCode so we can test MapAdapter.equals(DummyMap)
+        // do NOT override equals and hashCode so we can test MapAdapter.equals(DummyMap)
     }
     
     /**

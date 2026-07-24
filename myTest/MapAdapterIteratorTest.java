@@ -443,4 +443,115 @@ public class MapAdapterIteratorTest {
         
         assertEquals(3, map.size());
     }
+
+    /**
+     * Tests hasNext() on KeySet iterator when map is empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hasNext() on KeySet iterator when map is empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks hasNext on an empty map's KeySet iterator.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hasNext().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetIteratorHasNextEmpty() {
+        assertFalse(map.keySet().iterator().hasNext());
+    }
+
+    /**
+     * Tests hasNext() on KeySet iterator when map is not empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hasNext() on KeySet iterator when map is not empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks hasNext on a populated map's KeySet iterator.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hasNext().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testKeySetIteratorHasNextNonEmpty() {
+        map.put("A", "1");
+        assertTrue(map.keySet().iterator().hasNext());
+    }
+
+    /**
+     * Tests hasNext() on Values iterator when map is empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hasNext() on Values iterator when map is empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks hasNext on an empty map's Values iterator.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hasNext().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesIteratorHasNextEmpty() {
+        assertFalse(map.values().iterator().hasNext());
+    }
+
+    /**
+     * Tests hasNext() on Values iterator when map is not empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hasNext() on Values iterator when map is not empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks hasNext on a populated map's Values iterator.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hasNext().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesIteratorHasNextNonEmpty() {
+        map.put("A", "1");
+        assertTrue(map.values().iterator().hasNext());
+    }
+
+    /**
+     * Tests hasNext() on EntrySet iterator when map is empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hasNext() on EntrySet iterator when map is empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks hasNext on an empty map's EntrySet iterator.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hasNext().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEntrySetIteratorHasNextEmpty() {
+        assertFalse(map.entrySet().iterator().hasNext());
+    }
+
+    /**
+     * Tests hasNext() on EntrySet iterator when map is not empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests hasNext() on EntrySet iterator when map is not empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks hasNext on a populated map's EntrySet iterator.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls hasNext().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testEntrySetIteratorHasNextNonEmpty() {
+        map.put("A", "1");
+        assertTrue(map.entrySet().iterator().hasNext());
+    }
 }

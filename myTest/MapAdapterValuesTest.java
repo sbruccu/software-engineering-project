@@ -496,4 +496,344 @@ public class MapAdapterValuesTest {
         assertTrue(map.values().retainAll(otherMap.values()));
         assertTrue(map.isEmpty());
     }
+
+    /**
+     * Tests isEmpty() on values when map is empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests isEmpty() on values when map is empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks isEmpty on an empty map's values.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls isEmpty().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesIsEmptyWhenMapEmpty() {
+        assertTrue(map.values().isEmpty());
+    }
+
+    /**
+     * Tests isEmpty() on values when map is not empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests isEmpty() on values when map is not empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks isEmpty on a populated map's values.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls isEmpty().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesIsEmptyWhenMapNonEmpty() {
+        map.put("A", "1");
+        assertFalse(map.values().isEmpty());
+    }
+
+    /**
+     * Tests contains() on values for an existing value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests contains() on values for an existing value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks contains for a value present in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls contains().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "1".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesContainsExisting() {
+        map.put("A", "1");
+        assertTrue(map.values().contains("1"));
+    }
+
+    /**
+     * Tests contains() on values for an absent value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests contains() on values for an absent value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks contains for a value not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls contains().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "1".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesContainsAbsent() {
+        map.put("A", "1");
+        assertFalse(map.values().contains("2"));
+    }
+
+    /**
+     * Tests contains() on values with a wrong type.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests contains() on values with a wrong type.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks contains using an Integer.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls contains(Integer).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String values.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesContainsWrongType() {
+        map.put("A", "1");
+        assertFalse(map.values().contains(new Integer(1)));
+    }
+
+    /**
+     * Tests remove() on values for an existing value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on values for an existing value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a value that exists.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "1".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveExisting() {
+        map.put("A", "1");
+        assertTrue(map.values().remove("1"));
+    }
+
+    /**
+     * Tests remove() on values for an absent value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on values for an absent value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a value not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "1".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveAbsent() {
+        map.put("A", "1");
+        assertFalse(map.values().remove("2"));
+    }
+
+    /**
+     * Tests remove() on values with a wrong type.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on values with a wrong type.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes using an Integer.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove(Integer).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String values.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveWrongType() {
+        map.put("A", "1");
+        assertFalse(map.values().remove(new Integer(1)));
+    }
+
+    /**
+     * Tests clear() on values when empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on values when empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Clears an empty values collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls clear().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map remains empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>No exceptions.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesClearEmpty() {
+        map.values().clear();
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests clear() on values when non-empty.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on values when non-empty.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Clears a populated values collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls clear().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Map size is 0.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesClearNonEmpty() {
+        map.put("A", "1");
+        map.values().clear();
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests containsAll() with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsAll() with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks if values contains all elements of an empty collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsAll on an empty collection.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesContainsAllEmpty() {
+        map.put("A", "1");
+        HCollection empty = new MapAdapter().values();
+        assertTrue(map.values().containsAll(empty));
+    }
+
+    /**
+     * Tests containsAll() with a subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsAll() with a subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks if values contains a subset of its values.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsAll with a subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesContainsAllSubset() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HMap other = new MapAdapter();
+        other.put("A", "1");
+        assertTrue(map.values().containsAll(other.values()));
+    }
+
+    /**
+     * Tests containsAll() with a non-subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsAll() with a non-subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks if values contains elements not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsAll with a non-subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesContainsAllNonSubset() {
+        map.put("A", "1");
+        HMap other = new MapAdapter();
+        other.put("C", "3");
+        assertFalse(map.values().containsAll(other.values()));
+    }
+
+    /**
+     * Tests removeAll() with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removeAll() with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes an empty collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls removeAll with an empty set.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveAllEmpty() {
+        map.put("A", "1");
+        HCollection empty = new MapAdapter().values();
+        assertFalse(map.values().removeAll(empty));
+    }
+
+    /**
+     * Tests removeAll() with a subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests removeAll() with a subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a subset of values.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls removeAll with a subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Subset removed.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRemoveAllSubset() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HMap other = new MapAdapter();
+        other.put("A", "1");
+        assertTrue(map.values().removeAll(other.values()));
+        assertFalse(map.containsValue("1"));
+    }
+
+    /**
+     * Tests retainAll() with an empty collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests retainAll() with an empty collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Retains an empty collection.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls retainAll with an empty set.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRetainAllEmpty() {
+        map.put("A", "1");
+        HCollection empty = new MapAdapter().values();
+        assertTrue(map.values().retainAll(empty));
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests retainAll() with a subset collection.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests retainAll() with a subset collection.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Retains a subset of values.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls retainAll with a subset.</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with entries.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Only subset retained.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>Returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testValuesRetainAllSubset() {
+        map.put("A", "1");
+        map.put("B", "2");
+        HMap other = new MapAdapter();
+        other.put("A", "1");
+        assertTrue(map.values().retainAll(other.values()));
+        assertFalse(map.containsValue("2"));
+    }
 }

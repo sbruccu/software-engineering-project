@@ -545,4 +545,351 @@ public class MapAdapterCoreTest {
         assertEquals("V2", map.remove("K1")); // removing existing returns old value
         assertNull(map.remove("K1")); // removing absent returns null
     }
+
+    /**
+     * Tests size() with one element.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests size() with one element.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Puts one element and checks size.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls put() then size().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map has 1 element.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>size() returns 1.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testSizeOne() {
+        map.put("A", "1");
+        assertEquals(1, map.size());
+    }
+
+    /**
+     * Tests size() with multiple elements.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests size() with multiple elements.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Puts multiple elements and checks size.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls put() 3 times then size().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map has 3 elements.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>size() returns 3.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testSizeMultiple() {
+        map.put("A", "1");
+        map.put("B", "2");
+        map.put("C", "3");
+        assertEquals(3, map.size());
+    }
+
+    /**
+     * Tests isEmpty() after put().
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests isEmpty() after put().</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Puts an element and checks isEmpty.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls put() then isEmpty().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map has 1 element.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>isEmpty() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testIsEmptyAfterPut() {
+        map.put("A", "1");
+        assertFalse(map.isEmpty());
+    }
+
+    /**
+     * Tests isEmpty() after clear().
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests isEmpty() after clear().</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Populates map, clears it, and checks isEmpty.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls put(), clear() then isEmpty().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>isEmpty() returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testIsEmptyAfterClear() {
+        map.put("A", "1");
+        map.clear();
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests get() on an existing key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests get() on an existing key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Puts and gets the same key.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls put("A", "1") then get("A").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map has 1 element.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>get() returns "1".</td></tr>
+     * </table>
+     */
+    @Test
+    public void testGetExisting() {
+        map.put("A", "1");
+        assertEquals("1", map.get("A"));
+    }
+
+    /**
+     * Tests get() on an absent key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests get() on an absent key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Gets a key that is not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls get("B") on a map with "A".</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with 1 element.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>get() returns null.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testGetAbsent() {
+        map.put("A", "1");
+        assertNull(map.get("B"));
+    }
+
+    /**
+     * Tests get() with a wrong type key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests get() with a wrong type key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Gets using an Integer when keys are Strings.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls get(new Integer(1)).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String keys.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>get() returns null.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testGetWrongType() {
+        map.put("A", "1");
+        assertNull(map.get(new Integer(1)));
+    }
+
+    /**
+     * Tests remove() on an existing key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on an existing key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a key that is in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove("A").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map is empty.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>remove() returns "1".</td></tr>
+     * </table>
+     */
+    @Test
+    public void testRemoveExisting() {
+        map.put("A", "1");
+        assertEquals("1", map.remove("A"));
+    }
+
+    /**
+     * Tests remove() on an absent key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() on an absent key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes a key not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove("B").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>remove() returns null.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testRemoveAbsent() {
+        map.put("A", "1");
+        assertNull(map.remove("B"));
+    }
+
+    /**
+     * Tests remove() with a wrong type key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests remove() with a wrong type key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Removes using an Integer when keys are Strings.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls remove(new Integer(1)).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String keys.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>remove() returns null.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testRemoveWrongType() {
+        map.put("A", "1");
+        assertNull(map.remove(new Integer(1)));
+    }
+
+    /**
+     * Tests containsKey() on an existing key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsKey() on an existing key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks containsKey for a key in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsKey("A").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>containsKey() returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsKeyExisting() {
+        map.put("A", "1");
+        assertTrue(map.containsKey("A"));
+    }
+
+    /**
+     * Tests containsKey() on an absent key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsKey() on an absent key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks containsKey for a key not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsKey("B").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "A".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>containsKey() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsKeyAbsent() {
+        map.put("A", "1");
+        assertFalse(map.containsKey("B"));
+    }
+
+    /**
+     * Tests containsKey() with a wrong type key.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsKey() with a wrong type key.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks containsKey using an Integer when keys are Strings.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsKey(new Integer(1)).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String keys.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>containsKey() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsKeyWrongType() {
+        map.put("A", "1");
+        assertFalse(map.containsKey(new Integer(1)));
+    }
+
+    /**
+     * Tests containsValue() on an existing value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsValue() on an existing value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks containsValue for a value in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsValue("1").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "1".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>containsValue() returns true.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsValueExisting() {
+        map.put("A", "1");
+        assertTrue(map.containsValue("1"));
+    }
+
+    /**
+     * Tests containsValue() on an absent value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsValue() on an absent value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks containsValue for a value not in the map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsValue("2").</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with "1".</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>containsValue() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsValueAbsent() {
+        map.put("A", "1");
+        assertFalse(map.containsValue("2"));
+    }
+
+    /**
+     * Tests containsValue() with a wrong type value.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests containsValue() with a wrong type value.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Checks containsValue using an Integer when values are Strings.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls containsValue(new Integer(1)).</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with String values.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Map unchanged.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>containsValue() returns false.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testContainsValueWrongType() {
+        map.put("A", "1");
+        assertFalse(map.containsValue(new Integer(1)));
+    }
+
+    /**
+     * Tests clear() on an empty map.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on an empty map.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Clears a map that is already empty.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Calls clear().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>No exceptions, map stays empty.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testClearEmpty() {
+        map.clear();
+        assertTrue(map.isEmpty());
+    }
+
+    /**
+     * Tests clear() on a non-empty map.
+     * <p>
+     * <table border="1">
+     * <caption></caption>
+     * <tr><th>Summary</th><td>Tests clear() on a non-empty map.</td></tr>
+     * <tr><td><b>Test Case Design</b></td><td>Clears a populated map.</td></tr>
+     * <tr><td><b>Test Description</b></td><td>Puts elements then calls clear().</td></tr>
+     * <tr><td><b>Pre-Condition</b></td><td>Map with elements.</td></tr>
+     * <tr><td><b>Post-Condition</b></td><td>Empty map.</td></tr>
+     * <tr><td><b>Expected Results</b></td><td>size() is 0.</td></tr>
+     * </table>
+     */
+    @Test
+    public void testClearNonEmpty() {
+        map.put("A", "1");
+        map.put("B", "2");
+        map.clear();
+        assertEquals(0, map.size());
+    }
 }
